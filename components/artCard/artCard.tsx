@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import styles from './artCard.module.css';
+import styles from './artCard.module.scss';
 import Image, { ImageProps } from 'next/image';
 
 interface ArtCardProps {
