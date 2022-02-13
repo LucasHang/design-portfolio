@@ -1,36 +1,42 @@
-import { FC } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import classNames from 'classnames';
 import styles from './artCard.module.scss';
-import Image, { ImageProps } from 'next/image';
+
+export interface Art {
+    name: string;
+    slug: string;
+    description?: string;
+    url: string;
+    blurDataURL?: string;
+}
 
 interface ArtCardProps {
-    art: { name: string; slug: string; description: string; url: string };
-    imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>;
+    art: Art;
 }
 
 const placeholderImg = '/art-img-placeholder.svg';
 
-const ArtCard: FC<ArtCardProps> = ({ art, imgProps }) => {
+export default function ArtCard({ art }: ArtCardProps) {
     return (
         <Link href={`/arts/${art.slug}`}>
-            <a className={styles.slim} aria-label={art.name}>
-                <div className={styles.header}>
-                    <span>{art.name}</span>
-                </div>
+            <a className={classNames(styles.root, styles.slim)} aria-label={art.name}>
+                {/* <div className={styles.header}>{art.name}</div> */}
+
                 <div>
                     <Image
-                        quality="85"
+                        {...art}
+                        quality="100"
                         src={art.url || placeholderImg}
                         alt={art.name || 'Art Image'}
-                        height={320}
-                        width={320}
-                        layout="fixed"
-                        {...imgProps}
+                        height="100%"
+                        width="100%"
+                        layout="responsive"
+                        placeholder="blur"
+                        className={styles.artImage}
                     />
                 </div>
             </a>
         </Link>
     );
-};
-
-export default ArtCard;
+}

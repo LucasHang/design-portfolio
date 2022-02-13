@@ -1,30 +1,17 @@
 .root {
-    height: 100% !important;
+    position: relative;
 }
   
-.root:hover {
-    & .productImage {
-      transform: scale(1.2625);
-    }
-  
-    & .header .name span {
-    //   @apply bg-secondary text-secondary;
-    }
-  
-    &:nth-child(6n + 1) .header .name span {
-    //   @apply bg-violet text-white;
-    }
-  
-    &:nth-child(6n + 5) .header .name span {
-    //   @apply bg-blue text-white;
-    }
-  
-    &:nth-child(6n + 3) .header .name span {
-    //   @apply bg-pink text-white;
-    }
-  
-    &:nth-child(6n + 6) .header .name span {
-    //   @apply bg-cyan text-white;
+.root {
+    & .artImage {
+        object-fit: cover;
+        object-position: center 25%;
+        transition: all 0.3s;
+
+        &:hover{
+            transform: scale(1.2625);
+            transition: all 0.3s;
+        }
     }
 }
   
@@ -38,52 +25,10 @@
 }
   
 .header .name {
-    padding-top: 0px;
-    max-width: 100%;
     width: 100%;
-    // @apply pt-0 max-w-full w-full leading-extra-loose
+    max-width: 100%;
     font-size: 2rem;
     letter-spacing: 0.4px;
+    padding-top: 0px;
     transition: color ease-in-out 0.5s;
-}
-
-.header .name span {
-    // @apply py-4 px-6 bg-primary text-primary font-bold
-    // transition-colors ease-in-out duration-500;
-    font-size: inherit;
-    letter-spacing: inherit;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-}
-  
-.imageContainer {
-    // @apply flex items-center justify-center overflow-hidden;
-}
-  
-.imageContainer > div {
-    min-width: 100%;
-}
-  
-.imageContainer .productImage {
-    // @apply transform transition-transform duration-500
-    // object-cover scale-120;
-}
-
-
-.slim {
-    // @apply bg-transparent relative overflow-hidden
-    // box-border;
-}
-  
-.slim .header {
-    // @apply absolute inset-0 flex items-center justify-end mr-8 z-20;
-}
-  
-.slim span {
-    // @apply bg-accent-9 text-accent-0 inline-block p-3
-    // font-bold text-xl break-words;
-}
-  
-.root:global(.secondary) .header span {
-    // @apply bg-accent-0 text-accent-9;
 }
