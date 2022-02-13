@@ -1,11 +1,19 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import Head from 'next/head';
 import SideNav from '../sideNav';
+import utilStyles from '../../styles/utils.module.scss';
 import styles from './layout.module.scss';
+import Header from '../header';
 
 export const siteTitle = 'Arts by Leandro';
 
 export default function Layout({ children }: PropsWithChildren<unknown>) {
+    const [sideNavOpened, setSideNavOpened] = useState(false);
+
+    function onToggleSideNav() {
+        setSideNavOpened(state => !state);
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -22,9 +30,11 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
                 <title>{siteTitle}</title>
             </Head>
 
-            <SideNav />
+            <Header onToggleSideNav={onToggleSideNav} />
 
-            <main>{children}</main>
+            <SideNav opened={sideNavOpened} />
+
+            <main className={utilStyles.scrollbar}>{children}</main>
         </div>
     );
 }

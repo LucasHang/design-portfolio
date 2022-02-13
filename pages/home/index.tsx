@@ -48,9 +48,11 @@ export default function Home({ arts }: InferGetStaticPropsType<typeof getStaticP
     return (
         <Layout>
             <div className={styles.root}>
-                {arts.map(art => {
-                    return <ArtCard key={art.slug} art={art} />;
-                })}
+                <div className={styles.artsGrid}>
+                    {arts.map(art => {
+                        return <ArtCard key={art.slug} art={art} />;
+                    })}
+                </div>
             </div>
         </Layout>
     );

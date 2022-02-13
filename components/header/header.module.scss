@@ -1,0 +1,37 @@
+@import '../../styles/variables.scss';
+
+.header {
+    grid-column: 1 / span 2;
+    display: flex;
+    align-items: center;
+    padding: 0 $lateral-padding;
+
+    & a.brandName {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    & .sideNavToggle {
+        display: grid;
+        place-items: center;
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+        outline: none;
+    }
+}
+
+@media(min-width: $desktop-breakpoint) {
+    .header {
+        display: none;
+    }
+}
+
+@media(max-width: $phone-breakpoint) {
+    .header {
+        & a.brandName {
+            font-size: 5.2vw;
+        }
+    }
+}

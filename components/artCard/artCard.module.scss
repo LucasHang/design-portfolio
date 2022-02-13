@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .root {
     position: relative;
 }
@@ -6,10 +8,12 @@
     & .artImage {
         object-fit: cover;
         object-position: center 25%;
+        border-radius: 0.2rem;
         transition: all 0.3s;
 
         &:hover{
             transform: scale(1.2625);
+            border-radius: 0;
             transition: all 0.3s;
         }
     }
@@ -20,15 +24,31 @@
     top: 0;
     left: 0;
     z-index: 20;
-    padding-right: 16px;
-    transition: color ease-in-out 0.5s;
+    background-color: $background-color;
+    padding: 0.8rem;
+    padding: 1.14vw;
+
+    & span {
+        font-size: 1.4vw;
+    }
 }
-  
-.header .name {
-    width: 100%;
-    max-width: 100%;
-    font-size: 2rem;
-    letter-spacing: 0.4px;
-    padding-top: 0px;
-    transition: color ease-in-out 0.5s;
+
+@media(max-width: $desktop-breakpoint){
+    .header {
+        padding: 1.5vw;
+    
+        & span {
+            font-size: 1.8vw;
+        }
+    }
+}
+
+@media(max-width: $phone-breakpoint){
+    .header {
+        padding: 2vw;
+    
+        & span {
+            font-size: 2.6vw;
+        }
+    }
 }

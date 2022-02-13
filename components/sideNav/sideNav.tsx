@@ -2,14 +2,18 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import classnames from 'classnames';
 import styles from './sideNav.module.scss';
-import utilStyles from '../../styles/utils.module.css';
+import utilStyles from '../../styles/utils.module.scss';
 import { randomRgb } from '../../utils/functions';
 
 const caretInterval = 500;
 
 const categories = ['home', 'photos', 'videos', '3d', 'books', 'tutorials', 'typography', 'ui/ux'];
 
-export default function SideNav() {
+interface SideNavProps {
+    opened: boolean;
+}
+
+export default function SideNav({ opened }: SideNavProps) {
     const [borderHovered, setBorderHovered] = useState(false);
     const [borderHoverColor, setBorderHoverColor] = useState<string>();
 
@@ -40,7 +44,7 @@ export default function SideNav() {
     }, [borderHovered]);
 
     return (
-        <nav className={styles.nav}>
+        <nav className={classnames(styles.nav, utilStyles.scrollbar, { [styles.opened]: opened })}>
             <Link href="/">
                 <a className={classnames(utilStyles.headingLg, styles.brandName)}>Arts by Leandro</a>
             </Link>
