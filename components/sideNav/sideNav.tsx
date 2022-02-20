@@ -1,39 +1,63 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import classnames from 'classnames';
-import styles from './sideNav.module.scss';
 import utilStyles from '../../styles/utils.module.scss';
-import { randomRgb } from '../../utils/functions';
+import { randomRgb, getQueryArrayIfExists } from '../../utils/functions';
+import { getCategories } from '../../services/category';
+import styles from './sideNav.module.scss';
 
 const caretInterval = 500;
-
-const categories = ['home', 'photos', 'videos', '3d', 'books', 'tutorials', 'typography', 'ui/ux'];
 
 interface SideNavProps {
     opened: boolean;
 }
 
 export default function SideNav({ opened }: SideNavProps) {
-    const [borderHovered, setBorderHovered] = useState(false);
+    const router = useRouter();
+
+    const [categories, setCategories] = useState<Array<string>>([]);
+    const [newBorderHoverColor, setNewBorderHoverColor] = useState<string>();
     const [borderHoverColor, setBorderHoverColor] = useState<string>();
 
-    function handleNavItemMouseOver() {
-        setBorderHoverColor(randomRgb());
-        setBorderHovered(true);
+    const filteredCategories = getQueryArrayIfExists(router.query?.category);
+
+    console.log('filteredCategories', filteredCategories);
+
+    const isInHome = !filteredCategories;
+
+    function isCategorySelected(category: string) {
+        return !isInHome && filteredCategories.includes(category);
     }
 
-    function handleNavItemMouseOut() {
-        setBorderHovered(false);
+    function handleNavItemMouseOver() {
+        const newColor = randomRgb();
+        setNewBorderHoverColor(newColor);
+        setBorderHoverColor(newColor);
+    }
+
+    function concatWithCategoriesQuery(category: string) {
+        return [...(filteredCategories || []), category].map(item => encodeURIComponent(item)).join(',');
+    }
+    function removeFromCategoriesQuery(category: string) {
+        return [...(filteredCategories?.filter(item => item !== category) || [])]
+            .map(item => encodeURIComponent(item))
+            .join(',');
+    }
+
+    function toogleCategoryFilter(category: string) {
+        const newCategoryFilter = filteredCategories?.includes(category)
+            ? removeFromCategoriesQuery(category)
+            : concatWithCategoriesQuery(category);
+        router.replace(`/home?category=${newCategoryFilter}`);
     }
 
     useEffect(() => {
-        const currentBorderHoverColor = borderHoverColor;
-
         // Simulate a caret behavior, changing between current color and transparent
         const interval = setInterval(() => {
             setBorderHoverColor(state => {
                 if (state === 'transparent') {
-                    return currentBorderHoverColor;
+                    return newBorderHoverColor;
                 }
 
                 return 'transparent';
@@ -41,27 +65,42 @@ export default function SideNav({ opened }: SideNavProps) {
         }, caretInterval);
 
         return () => clearInterval(interval);
-    }, [borderHovered]);
+    }, [newBorderHoverColor]);
+
+    useEffect(() => {
+        getCategories().then(setCategories).catch(console.error);
+    }, []);
 
     return (
         <nav className={classnames(styles.nav, utilStyles.scrollbar, { [styles.opened]: opened })}>
-            <Link href="/">
+            <Link href="/home">
                 <a className={classnames(utilStyles.headingLg, styles.brandName)}>Arts by Leandro</a>
             </Link>
 
             <div className={styles.navItems}>
+                <Link href="/home">
+                    <a
+                        className={classnames(utilStyles.headingMd, { [styles.active]: isInHome })}
+                        onMouseOver={handleNavItemMouseOver}
+                        style={{ borderColor: borderHoverColor }}
+                    >
+                        home
+                    </a>
+                </Link>
+
                 {categories.map(category => {
                     return (
-                        <Link key={category} href="/">
-                            <a
-                                className={utilStyles.headingMd}
-                                onMouseOver={handleNavItemMouseOver}
-                                onMouseOut={handleNavItemMouseOut}
-                                style={{ borderColor: borderHoverColor }}
-                            >
-                                {category}
-                            </a>
-                        </Link>
+                        <a
+                            key={category}
+                            onClick={() => toogleCategoryFilter(category)}
+                            className={classnames(utilStyles.headingMd, {
+                                [styles.active]: isCategorySelected(category),
+                            })}
+                            onMouseOver={handleNavItemMouseOver}
+                            style={{ borderColor: borderHoverColor }}
+                        >
+                            {category}
+                        </a>
                     );
                 })}
             </div>

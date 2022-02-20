@@ -33,7 +33,7 @@ $nav-padding-left: $lateral-padding;
             margin-bottom: 0.4rem;
             transition: all 0.3s;
     
-            &:hover {
+            &:hover, &.active {
                 border-left: 6px solid red;
                 text-decoration: none;
                 transition: all 0.3s;

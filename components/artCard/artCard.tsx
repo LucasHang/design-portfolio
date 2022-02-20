@@ -1,16 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import classNames from 'classnames';
-import utilStyles from '../../styles/utils.module.scss';
 import styles from './artCard.module.scss';
-
-export interface Art {
-    name: string;
-    slug: string;
-    description?: string;
-    url: string;
-    blurDataURL?: string;
-}
+import utilStyles from '../../styles/utils.module.scss';
+import { Art } from '../../types/art';
 
 interface ArtCardProps {
     art: Art;
