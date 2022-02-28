@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+
+.root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding: 1rem $lateral-padding 1rem 0;
+
+    & .header {
+        & .title {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background-color: $seconday-color;
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+
+            & a {
+                display: grid;
+                place-items: center;
+            }
+        }
+    }
+
+    & .contentsContainer {
+        & .artImage {
+            object-fit: cover;
+            object-position: center 25%;
+            border-radius: 0.2rem;
+            transition: all 0.3s;
+    
+            &:hover{
+                transform: scale(1.2625);
+                border-radius: 0;
+                transition: all 0.3s;
+            }
+        }
+    }
+}

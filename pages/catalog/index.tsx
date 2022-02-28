@@ -6,7 +6,11 @@ import { Art, ContentTag, ContentType } from '../../types/art';
 import { getQueryArrayIfExists } from '../../utils';
 import styles from './catalog.module.scss';
 
-export default function Catalog({ arts }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export interface CatalogProps {
+    arts: Array<Art>;
+}
+
+export default function Catalog({ arts }: CatalogProps) {
     return (
         <Layout>
             <div className={styles.root}>

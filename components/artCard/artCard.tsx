@@ -65,6 +65,7 @@ export default function ArtCard({ art }: ArtCardProps) {
                         {otherContents.map(content => {
                             return (
                                 <Image
+                                    key={content.url}
                                     src={content.url}
                                     placeholder="blur"
                                     blurDataURL={content.blurDataUrl}
