@@ -1,6 +1,8 @@
 @import '../../styles/variables.scss';
 
 .root {
+    z-index: 1;
+    position: relative;
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr;
@@ -23,6 +25,8 @@
     }
 
     & .contentsContainer {
+        position: relative;
+
         & .artImage {
             object-fit: cover;
             object-position: center 25%;
@@ -34,6 +38,19 @@
                 border-radius: 0;
                 transition: all 0.3s;
             }
+        }
+
+        & .crossLine {
+            z-index: -1;
+            height: 72px;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            background-image: linear-gradient(to right, $primary-color, $background-color 60%);
+            border-top: 10px solid $primary-color;
+            margin-top: -72px;
         }
     }
 }

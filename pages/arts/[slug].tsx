@@ -66,6 +66,8 @@ export default function Arts({ art }: ArtsProps) {
                             </div>
                         );
                     })}
+
+                    <div className={styles.crossLine}></div>
                 </div>
             </div>
         </Layout>
