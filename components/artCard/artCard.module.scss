@@ -23,32 +23,80 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 20;
-    background-color: $background-color;
-    padding: 0.8rem;
-    padding: 1.14vw;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
 
-    & span {
-        font-size: 1.4vw;
+    & .title {
+        background-color: $background-color;
+        padding: 0.8rem;
+        padding: 1.14vw;
+    
+        & span {
+            font-size: 1.4vw;
+        }
+    }
+    
+    & .tags {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        z-index: 1;
+        padding: 0.3rem;
+    
+        & .tagIcon {
+            width: 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+        }
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+
+    & .preview {
+        display: flex;
+        gap: 0.35rem;
     }
 }
 
 @media(max-width: $desktop-breakpoint){
     .header {
-        padding: 1.5vw;
+        & .title {
+            padding: 1.5vw;
     
-        & span {
-            font-size: 1.8vw;
+            & span {
+                font-size: 1.8vw;
+            }
+        }
+        
+        & .tags {
+            display: none;
+        }
+    }
+
+    .footer {
+        & .preview {
+            display: none;
         }
     }
 }
 
 @media(max-width: $phone-breakpoint){
     .header {
-        padding: 2vw;
-    
-        & span {
-            font-size: 2.6vw;
+        & .title {
+            padding: 2vw;
+        
+            & span {
+                font-size: 2.6vw;
+            }
         }
     }
 }

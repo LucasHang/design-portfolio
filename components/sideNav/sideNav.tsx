@@ -22,12 +22,10 @@ export default function SideNav({ opened }: SideNavProps) {
 
     const filteredCategories = getQueryArrayIfExists(router.query?.category);
 
-    console.log('filteredCategories', filteredCategories);
-
-    const isInHome = !filteredCategories;
+    const isInRoot = !filteredCategories;
 
     function isCategorySelected(category: string) {
-        return !isInHome && filteredCategories.includes(category);
+        return !isInRoot && filteredCategories.includes(category);
     }
 
     function handleNavItemMouseOver() {
@@ -49,7 +47,7 @@ export default function SideNav({ opened }: SideNavProps) {
         const newCategoryFilter = filteredCategories?.includes(category)
             ? removeFromCategoriesQuery(category)
             : concatWithCategoriesQuery(category);
-        router.replace(`/home?category=${newCategoryFilter}`);
+        router.replace(`/catalog?category=${newCategoryFilter}`);
     }
 
     useEffect(() => {
@@ -73,18 +71,18 @@ export default function SideNav({ opened }: SideNavProps) {
 
     return (
         <nav className={classnames(styles.nav, utilStyles.scrollbar, { [styles.opened]: opened })}>
-            <Link href="/home">
+            <Link href="/catalog">
                 <a className={classnames(utilStyles.headingLg, styles.brandName)}>Arts by Leandro</a>
             </Link>
 
             <div className={styles.navItems}>
-                <Link href="/home">
+                <Link href="/catalog">
                     <a
-                        className={classnames(utilStyles.headingMd, { [styles.active]: isInHome })}
+                        className={classnames(utilStyles.headingMd, { [styles.active]: isInRoot })}
                         onMouseOver={handleNavItemMouseOver}
                         style={{ borderColor: borderHoverColor }}
                     >
-                        home
+                        catalog
                     </a>
                 </Link>
 
