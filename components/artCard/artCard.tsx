@@ -1,11 +1,10 @@
-import { useMemo } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import classNames from 'classnames';
 import { FaImage, FaImages, FaPhotoVideo } from 'react-icons/fa';
 import { MdOutlineVideoLibrary, MdOutlineSlowMotionVideo } from 'react-icons/md';
 import { Art, ContentTag } from '../../types/art';
 import utilStyles from '../../styles/utils.module.scss';
+import { ArtContent, ArtContentPreview } from '../artContent';
 import styles from './artCard.module.scss';
 
 const ICONS_BY_TAG = {
@@ -46,36 +45,12 @@ export default function ArtCard({ art }: ArtCardProps) {
                     </div>
                 </div>
 
-                <div>
-                    <Image
-                        quality="100"
-                        src={mainContent.url}
-                        alt={art.name || 'Art Image'}
-                        height="100%"
-                        width="100%"
-                        layout="responsive"
-                        placeholder="blur"
-                        blurDataURL={mainContent.blurDataUrl}
-                        className={styles.artImage}
-                    />
-                </div>
+                <ArtContent content={mainContent} artName={art.name} />
 
                 <div className={styles.footer}>
                     <div className={styles.preview}>
                         {otherContents.map(content => {
-                            return (
-                                <Image
-                                    key={content.url}
-                                    src={content.url}
-                                    placeholder="blur"
-                                    blurDataURL={content.blurDataUrl}
-                                    alt={art.name || 'Art Image'}
-                                    height={84}
-                                    width={72}
-                                    layout="fixed"
-                                    className={styles.artImage}
-                                />
-                            );
+                            return <ArtContentPreview key={content.url} content={content} artName={art.name} />;
                         })}
                     </div>
                 </div>

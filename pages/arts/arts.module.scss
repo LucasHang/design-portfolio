@@ -27,17 +27,8 @@
     & .contentsContainer {
         position: relative;
 
-        & .artImage {
-            object-fit: cover;
-            object-position: center 25%;
-            border-radius: 0.2rem;
-            transition: all 0.3s;
-    
-            &:hover{
-                transform: scale(1.2625);
-                border-radius: 0;
-                transition: all 0.3s;
-            }
+        & .slide {
+            cursor: pointer;
         }
 
         & .crossLine {

@@ -1,6 +1,7 @@
 import { Art, ContentType } from '../types/art';
 
 const inImages = (name: string) => `/images/${name}`;
+const inVideos = (name: string) => `/videos/${name}`;
 
 const arts: Array<Art> = [
     {
@@ -10,9 +11,9 @@ const arts: Array<Art> = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
         contents: [
             {
-                url: inImages('ANE_LOOKAMARELO.jpg'),
-                blurDataUrl: inImages('ANE_LOOKAMARELO.jpg'),
-                type: ContentType.IMAGE,
+                url: inVideos('SITIO_A_VENDA.mp4'),
+                blurDataUrl: inVideos('SITIO_A_VENDA.mp4'),
+                type: ContentType.VIDEO,
             },
             {
                 url: inImages('ANE_LOOKAMARELO.jpg'),
@@ -44,8 +45,8 @@ const arts: Array<Art> = [
                 type: ContentType.IMAGE,
             },
             {
-                url: inImages('ANE_LOOKMORENA.jpg'),
-                blurDataUrl: inImages('ANE_LOOKMORENA.jpg'),
+                url: inVideos('SITIO_A_VENDA.mp4'),
+                blurDataUrl: inVideos('SITIO_A_VENDA.mp4'),
                 type: ContentType.VIDEO,
             },
         ],
@@ -59,13 +60,13 @@ const arts: Array<Art> = [
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took",
         contents: [
             {
-                url: inImages('ANE_LOOKPRETO.jpg'),
-                blurDataUrl: inImages('ANE_LOOKPRETO.jpg'),
+                url: inVideos('SITIO_A_VENDA.mp4'),
+                blurDataUrl: inVideos('SITIO_A_VENDA.mp4'),
                 type: ContentType.VIDEO,
             },
             {
-                url: inImages('ANE_LOOKPRETO.jpg'),
-                blurDataUrl: inImages('ANE_LOOKPRETO.jpg'),
+                url: inVideos('SITIO_A_VENDA.mp4'),
+                blurDataUrl: inVideos('SITIO_A_VENDA.mp4'),
                 type: ContentType.VIDEO,
             },
         ],
@@ -77,8 +78,8 @@ const arts: Array<Art> = [
         slug: 'ane-look-preto-2',
         contents: [
             {
-                url: inImages('ANE_LOOKPRETO_2.jpg'),
-                blurDataUrl: inImages('ANE_LOOKPRETO_2.jpg'),
+                url: inVideos('SITIO_A_VENDA.mp4'),
+                blurDataUrl: inVideos('SITIO_A_VENDA.mp4'),
                 type: ContentType.VIDEO,
             },
         ],
