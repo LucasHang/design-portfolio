@@ -1,8 +1,8 @@
-import { InferGetServerSidePropsType, GetServerSideProps } from 'next';
+import { GetServerSideProps } from 'next';
 import ArtCard from '../../components/artCard';
 import Layout from '../../components/layout';
 import { getArts } from '../../services/art';
-import { Art, ContentTag, ContentType } from '../../types/art';
+import { Art, ContentTag } from '../../types/art';
 import { getQueryArrayIfExists } from '../../utils';
 import styles from './catalog.module.scss';
 
@@ -30,8 +30,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const artsData = await getArts(filteredCategories);
 
     const arts = artsData.map(art => {
-        const images = art.contents.filter(content => content.type === ContentType.IMAGE);
-        const videos = art.contents.filter(content => content.type === ContentType.VIDEO);
+        const images = art.contents.filter(content => content.mimeType.includes('image'));
+        const videos = art.contents.filter(content => content.mimeType.includes('video'));
 
         let tag: ContentTag;
 

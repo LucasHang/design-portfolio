@@ -1,5 +1,6 @@
 {
   "private": false,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,6 +9,8 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "fslightbox-react": "^1.6.2-2",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.1.0",
     "keen-slider": "^6.6.3",
     "next": "latest",
     "react": "17.0.2",

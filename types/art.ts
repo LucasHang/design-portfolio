@@ -9,13 +9,8 @@ export interface Art {
 
 export interface Content {
     url: string;
-    blurDataUrl: string;
-    type: ContentType;
-}
-
-export enum ContentType {
-    IMAGE = 'image',
-    VIDEO = 'video',
+    blured?: { url: string };
+    mimeType: string;
 }
 
 export enum ContentTag {
