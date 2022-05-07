@@ -15,7 +15,7 @@ interface ArtContentProps {
 export default function ArtContent({ artName, content, tags, relatedContentsQtd = 1 }: ArtContentProps) {
     return (
         <div style={{ position: 'relative' }}>
-            {tags.length && (
+            {tags?.length && (
                 <div className={styles.tags}>
                     <ContentTags tags={tags} />
 
