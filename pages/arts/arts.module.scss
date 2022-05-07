@@ -13,7 +13,7 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            background-color: $seconday-color;
+            background-color: $background-color;
             padding-left: 0.5rem;
             margin-bottom: 1rem;
 
@@ -39,8 +39,8 @@
             top: 50%;
             left: 0;
             right: 0;
-            background-image: linear-gradient(to right, $primary-color, $background-color 60%);
-            border-top: 10px solid $primary-color;
+            background-image: linear-gradient(to right, $secondary-color, $background-color 60%);
+            border-top: 10px solid $secondary-color;
             margin-top: -72px;
         }
     }
