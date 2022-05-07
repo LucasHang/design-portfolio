@@ -14,7 +14,7 @@ $nav-padding-left: $lateral-padding;
     transition: margin 0.4s;
 
     & a {
-        color: #fff;
+        color: $text-color;
         text-decoration: none;
     }
 

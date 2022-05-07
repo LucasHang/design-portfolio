@@ -1,41 +1,24 @@
 @import '../../styles/variables.scss';
 
+a.root:hover {
+    text-decoration: none;
+}
+
 .root {
     position: relative;
+    margin-top: 5rem;
 }
   
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
     flex-direction: column;
-    z-index: 1;
 
     & .title {
-        background-color: $background-color;
         padding: 0.8rem;
         padding: 1.14vw;
     
         & span {
-            font-size: 1.4vw;
-        }
-    }
-    
-    & .tags {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-        z-index: 1;
-        padding: 0.3rem;
-    
-        & .tagIcon {
-            width: 32px;
-            height: 32px;
-            display: grid;
-            place-items: center;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 50%;
+            font-size: 1.5vw;
         }
     }
 }
@@ -59,7 +42,7 @@
             padding: 1.5vw;
     
             & span {
-                font-size: 1.8vw;
+                font-size: 2vw;
             }
         }
         
@@ -81,7 +64,7 @@
             padding: 2vw;
         
             & span {
-                font-size: 2.6vw;
+                font-size: 3.5vw;
             }
         }
     }
