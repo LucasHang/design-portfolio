@@ -10,16 +10,33 @@ interface HeaderProps {
 
 export default function Header({ onToggleSideNav }: HeaderProps) {
     return (
-        <header className={styles.header}>
-            <Link href="/">
-                <a className={classnames(utilStyles.headingLg, styles.brandName)}>Arts by Leandro</a>
-            </Link>
+        <>
+            <header className={classnames(styles.header, styles.desktopHeader)}>
+                <Link href="/">
+                    <a>
+                        <img src="static/images/logo.svg" alt="Hang Leandro Logo" height="40px" />
+                    </a>
+                </Link>
 
-            <div style={{ width: '0.8rem' }} />
+                <nav className={styles.nav}>
+                    <Link href="/about">
+                        <a>Sobre mim</a>
+                    </Link>
+                    <Link href="/contact">
+                        <a>Contato</a>
+                    </Link>
+                    <Link href="/videos">
+                        <a>Videos</a>
+                    </Link>
+                    <Link href="/photos">
+                        <a>Fotos</a>
+                    </Link>
+                </nav>
+            </header>
 
-            <button className={styles.sideNavToggle}>
-                <CgMenuRightAlt onClick={onToggleSideNav} size={28} />
-            </button>
-        </header>
+            <header className={classnames(styles.header, styles.mobileHeader)}>
+                <h1>Mobile header</h1>
+            </header>
+        </>
     );
 }

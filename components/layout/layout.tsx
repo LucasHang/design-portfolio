@@ -4,8 +4,9 @@ import SideNav from '../sideNav';
 import utilStyles from '../../styles/utils.module.scss';
 import styles from './layout.module.scss';
 import Header from '../header';
+import classnames from 'classnames';
 
-export const siteTitle = 'Arts by Leandro';
+export const siteTitle = 'Hang Leandro';
 
 export default function Layout({ children }: PropsWithChildren<unknown>) {
     const [sideNavOpened, setSideNavOpened] = useState(false);
@@ -17,8 +18,8 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
     return (
         <div className={styles.container}>
             <Head>
-                <link rel="icon" href="/favicon.ico" />
-                <meta name="description" content="Portifólio de artes de design gráfico" />
+                <link rel="icon" href="/favicon.svg" />
+                <meta name="description" content="Portfólio de artes de Hang Leandro" />
                 <meta
                     property="og:image"
                     content={`https://og-image.vercel.app/${encodeURI(
@@ -32,9 +33,9 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
 
             <Header onToggleSideNav={onToggleSideNav} />
 
-            <SideNav opened={sideNavOpened} />
+            {/* <SideNav opened={sideNavOpened} /> */}
 
-            <main className={utilStyles.scrollbar}>{children}</main>
+            <main className={classnames(utilStyles.scrollbar, styles.main)}>{children}</main>
         </div>
     );
 }

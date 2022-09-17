@@ -1,37 +1,44 @@
 @import '../../styles/variables.scss';
 
 .header {
-    grid-column: 1 / span 2;
-    display: flex;
-    align-items: center;
-    padding: 0 $lateral-padding;
-
-    & a.brandName {
-        color: $text-color;
-        font-weight: bold;
-        text-decoration: none;
-    }
-
-    & .sideNavToggle {
-        display: grid;
-        place-items: center;
-        border: none;
-        cursor: pointer;
-        background-color: transparent;
-        outline: none;
-    }
+    padding-bottom: 16px;
 }
 
-@media(min-width: $desktop-breakpoint) {
-    .header {
+.desktopHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.mobileHeader {
+    display: flex;
+    align-items: center;
+}
+
+@media(max-width: $desktop-breakpoint) {
+    .desktopHeader {
         display: none;
     }
 }
 
-@media(max-width: $phone-breakpoint) {
-    .header {
-        & a.brandName {
-            font-size: 5.2vw;
-        }
+@media(min-width: $desktop-breakpoint) {
+    .mobileHeader {
+        display: none;
+    }
+}
+
+// ------------------------
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    & a {
+        text-decoration: none;
+        padding: 8px;
     }
 }

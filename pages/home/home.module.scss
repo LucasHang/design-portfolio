@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.leftPanel {
+    position: absolute;
+    width: 54%;
+    height: 100%;
+    left: 0;
+
+    clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+
+    background-color: #d3d0c9;
+    background-image: url(https://bennettfeely.com/clippy/pics/pittsburgh.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.rightPanel {
+    position: absolute;
+    width: 54%;
+    height: 100%;
+    right: 0;
+
+    clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+
+    background-color: #d3d0c9;
+    background-image: url(https://bennettfeely.com/clippy/pics/pittsburgh.jpg);
+    background-size: cover;
+    background-position: center center;
+}
