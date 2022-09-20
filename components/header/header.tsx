@@ -26,7 +26,7 @@ export default function Header({ onToggleSideNav }: HeaderProps) {
                         <a>Contato</a>
                     </Link>
                     <Link href="/videos">
-                        <a>Videos</a>
+                        <a>Vídeos</a>
                     </Link>
                     <Link href="/photos">
                         <a>Fotos</a>
