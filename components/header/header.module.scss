@@ -14,8 +14,23 @@
 
 .mobileHeader {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
 }
+
+.sideNavToggle {
+    display: grid;
+    place-items: center;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+}
+
+// ----------------------
 
 @media(max-width: $desktop-breakpoint) {
     .desktopHeader {

@@ -33,7 +33,7 @@ export default function Layout({ children }: PropsWithChildren<unknown>) {
 
             <Header onToggleSideNav={onToggleSideNav} />
 
-            {/* <SideNav opened={sideNavOpened} /> */}
+            <SideNav opened={sideNavOpened} onClose={() => setSideNavOpened(false)} />
 
             <main className={classnames(utilStyles.scrollbar, styles.main)}>{children}</main>
         </div>

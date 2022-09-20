@@ -5,6 +5,7 @@
     display: grid;
     grid-template-rows: auto 1fr;
     background-color: $background-color;
+    
     padding: 24px 0px;
 
     & main {
@@ -15,4 +16,12 @@
 
 .main {
     padding: 0px 64px;
+}
+
+// ----------------
+
+@media(max-width: $desktop-breakpoint){
+    .main {
+        padding: 0px;
+    }
 }

@@ -1,68 +1,43 @@
 @import '../../styles/variables.scss';
 
 $nav-width: 16rem;
-$phone-nav-width: 12rem;
-$nav-padding-left: $lateral-padding;
 
 .nav {
-    width: $nav-width;
+    z-index: 1;
+    position: fixed;
+    width: 0;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-left: $nav-padding-left;
-    overflow-y: auto;
-    transition: margin 0.4s;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+
+    background-color: rgba(0, 0, 0, 0.75);
+    
+    transition: all 0.3s;
+
+    &.opened {
+        width: $nav-width;
+    }
 
     & a {
         color: $text-color;
         text-decoration: none;
     }
 
-    & a.brandName {
-        font-weight: bold;
-    }
-
     & .navItems {
         display: flex;
         flex-direction: column;
-        margin-top: 1rem;
+        align-items: center;
+        margin: 1rem;
     
         & a {
-            border: 0 solid red;
-            padding-left: 6px;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
             transition: all 0.3s;
     
             &:hover, &.active {
-                border-left: 6px solid red;
                 text-decoration: none;
                 transition: all 0.3s;
             }
         }
     }    
-}
-
-@media(max-width: $desktop-breakpoint) {
-    .nav {
-        width: $phone-nav-width;
-        margin-left: - calc($phone-nav-width - $nav-padding-left);
-
-        &.opened {
-            margin-left: 0;
-        }
-
-        & a.brandName {
-            display: none;
-        }
-    }
-}
-
-@media(max-width: $phone-breakpoint) {
-    .nav {
-        & .navItems {
-            & a {
-                font-size: 1rem;
-            }
-        }
-    }
 }

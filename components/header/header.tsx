@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { CgMenuRightAlt } from 'react-icons/cg';
 import classnames from 'classnames';
 import styles from './header.module.scss';
-import utilStyles from '../../styles/utils.module.scss';
 
 interface HeaderProps {
     onToggleSideNav(): void;
@@ -35,7 +34,15 @@ export default function Header({ onToggleSideNav }: HeaderProps) {
             </header>
 
             <header className={classnames(styles.header, styles.mobileHeader)}>
-                <h1>Mobile header</h1>
+                <Link href="/">
+                    <a>
+                        <img src="static/images/logo.svg" alt="Hang Leandro Logo" height="40px" />
+                    </a>
+                </Link>
+
+                <button className={styles.sideNavToggle}>
+                    <CgMenuRightAlt onClick={onToggleSideNav} size={28} />
+                </button>
             </header>
         </>
     );
