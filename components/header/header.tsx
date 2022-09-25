@@ -1,44 +1,89 @@
+import { useMemo } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { CgMenuRightAlt } from 'react-icons/cg';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import styles from './header.module.scss';
+
+const PAGE_TITLE_BY_PATH = {
+    about: 'Sobre mim',
+    contact: 'Contato',
+    videos: 'Vídeos',
+    photos: 'Fotos',
+};
 
 interface HeaderProps {
     onToggleSideNav(): void;
 }
 
 export default function Header({ onToggleSideNav }: HeaderProps) {
+    const { pathname } = useRouter();
+
+    const isAtHome = pathname === '/home';
+
+    const currentPageTitle = useMemo(() => {
+        const cleanPath = pathname.replace('/', '');
+
+        if (!cleanPath) {
+            return '';
+        }
+
+        return PAGE_TITLE_BY_PATH[cleanPath];
+    }, [pathname]);
+
     return (
         <>
-            <header className={classnames(styles.header, styles.desktopHeader)}>
-                <Link href="/">
+            <header className={classNames(styles.header, styles.desktopHeader)}>
+                <Link href="/home">
                     <a>
-                        <img src="static/images/logo.svg" alt="Hang Leandro Logo" height="40px" />
+                        <img
+                            src={`static/images/${isAtHome ? 'logo' : 'logo-icon'}.svg`}
+                            alt="Hang Leandro Logo"
+                            height="40px"
+                        />
                     </a>
                 </Link>
 
                 <nav className={styles.nav}>
                     <Link href="/about">
-                        <a>Sobre mim</a>
+                        <a className={classNames({ [styles.active]: pathname === '/about' })}>
+                            {PAGE_TITLE_BY_PATH.about}
+                        </a>
                     </Link>
                     <Link href="/contact">
-                        <a>Contato</a>
+                        <a className={classNames({ [styles.active]: pathname === '/contact' })}>
+                            {PAGE_TITLE_BY_PATH.contact}
+                        </a>
                     </Link>
                     <Link href="/videos">
-                        <a>Vídeos</a>
+                        <a className={classNames({ [styles.active]: pathname === '/videos' })}>
+                            {PAGE_TITLE_BY_PATH.videos}
+                        </a>
                     </Link>
                     <Link href="/photos">
-                        <a>Fotos</a>
+                        <a className={classNames({ [styles.active]: pathname === '/photos' })}>
+                            {PAGE_TITLE_BY_PATH.photos}
+                        </a>
                     </Link>
                 </nav>
             </header>
 
-            <header className={classnames(styles.header, styles.mobileHeader)}>
-                <Link href="/">
-                    <a>
-                        <img src="static/images/logo.svg" alt="Hang Leandro Logo" height="40px" />
-                    </a>
-                </Link>
+            <header className={classNames(styles.header, styles.mobileHeader)}>
+                <div className={styles.headerTitle}>
+                    <Link href="/home">
+                        <a>
+                            <img
+                                src={`static/images/${isAtHome ? 'logo' : 'logo-icon'}.svg`}
+                                alt="Hang Leandro Logo"
+                                height="40px"
+                            />
+                        </a>
+                    </Link>
+
+                    {!isAtHome && currentPageTitle && (
+                        <div className={styles.pageTitle}>{currentPageTitle}</div>
+                    )}
+                </div>
 
                 <button className={styles.sideNavToggle}>
                     <CgMenuRightAlt onClick={onToggleSideNav} size={28} />
