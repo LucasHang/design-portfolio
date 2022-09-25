@@ -1,0 +1,77 @@
+@import '../../styles/variables.scss';
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.contacts {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 16px;
+
+    & form {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    
+        & .formControl {
+            width: 100%;
+            height: 36px;
+            background-color: $secondary-color;
+            color: $text-color;
+            border: 0;
+            padding: 4px 8px;
+        }
+
+        & textarea.formControl {
+            height: 80px;
+            resize: none;
+        }
+    }
+
+    & .contactLinks {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        & a:hover {
+            text-decoration: none;
+        }
+
+        & .whatsappLink {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            background-color: $secondary-color;
+            padding: 8px 16px;
+        }
+
+        & .emailLink {
+            color: #aaa
+        }
+    }
+}
+
+// ------------
+
+@media(max-width: $desktop-breakpoint){
+    .contacts {
+        & form {
+            width: 300px;
+        }
+
+        & .contactLinks {
+            flex-direction: column;
+        }
+    }
+}
