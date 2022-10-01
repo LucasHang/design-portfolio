@@ -1,0 +1,12 @@
+.artImage {
+    object-fit: cover;
+    object-position: center 25%;
+
+    transition: all 0.3s;
+
+    &:hover {
+        transform: scale(1.2625);
+        
+        transition: all 0.3s;
+    }
+}
