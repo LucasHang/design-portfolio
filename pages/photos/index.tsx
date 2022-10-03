@@ -2,15 +2,14 @@ import { GetServerSideProps } from 'next';
 import { getArts } from '../../services/art';
 import { Art } from '../../types/art';
 import Layout from '../../components/layout';
-import styles from './photos.module.scss';
 import { PhotoContent } from '../../components/photoContent';
+import styles from './photos.module.scss';
 
 export interface PhotosProps {
     photoArts: Array<Art>;
 }
 
 function Photos({ photoArts }: PhotosProps) {
-    console.log(JSON.stringify(photoArts));
     return (
         <Layout>
             <div className={styles.container}>
