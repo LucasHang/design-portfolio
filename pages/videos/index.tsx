@@ -29,8 +29,15 @@ function Videos({ videoArts }: VideosProps) {
     return (
         <Layout>
             <div className={styles.container}>
-                {videoArts.map(art => {
-                    return <VideoContent key={art.slug} artName={art.name} content={art.contents[0]} />;
+                {videoArts.map((art, index) => {
+                    return (
+                        <VideoContent
+                            key={art.slug}
+                            artName={art.name}
+                            content={art.contents[0]}
+                            onClick={() => openLightBoxOnSlide(index + 1)}
+                        />
+                    );
                 })}
             </div>
 

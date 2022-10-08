@@ -1,9 +1,16 @@
+import { GetServerSideProps } from 'next';
 import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Layout from '../../components/layout';
+import { getContactFooter } from '../../services/contactFooter';
+import { ContactFooter } from '../../types/contactFooter';
 import styles from './contact.module.scss';
 
-function Contact() {
+interface ContactProps {
+    contactFooter: ContactFooter;
+}
+
+function Contact({ contactFooter }: ContactProps) {
     return (
         <Layout>
             <div className={styles.container}>
@@ -37,15 +44,20 @@ function Contact() {
                     </div>
                 </div>
 
-                <img
-                    src="/static/images/contact_footer.jpg"
-                    alt="Imagem de Rodapé"
-                    width="100%"
-                    height="100px"
-                />
+                <img src={contactFooter.image.url} alt="Imagem de Rodapé" width="100%" height="100px" />
             </div>
         </Layout>
     );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const contactFooter = await getContactFooter();
+
+    return {
+        props: {
+            contactFooter,
+        },
+    };
+};
 
 export default Contact;

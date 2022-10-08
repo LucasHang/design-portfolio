@@ -1,13 +1,14 @@
 
 .videoWrapper {
-    height: 100%; 
     width: 100%;
+    height: 34rem;
     overflow: hidden;
 }
 
 .videoContent {
     object-fit: cover;
     object-position: center 25%;
+    cursor: pointer;
 
     transition: all 0.3s;
 
